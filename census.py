@@ -32,6 +32,13 @@ if uploaded_file is not None:
     show_q1 = st.checkbox("1.How will you hide the indexes of the dataframe?.")
     if show_q1:
         st.write(data.style.hide_index())
+    
+    q7a = st.checkbox("7a. Add a Suffix to the column names.")
+    if q7a:
+        st.write(data.add_suffix('_rightone'))
+    q7b = st.checkbox("7b. Add a Prefix to the column names.")
+    if q7b:
+        st.write(data.add_prefix('leftone_'))
     show_q2 = st.checkbox("2. How can we set the caption / heading on the dataframe?")
     if show_q2:
         st.write(data.style.set_caption('India Census 2011 Dataset'))
@@ -48,13 +55,6 @@ if uploaded_file is not None:
     show_q6 = st.checkbox("6. How to set a column as index of the dataframe ?")
     if show_q6:
         st.write(data.set_index('District_code'))
-    q7a = st.checkbox("7a. Add a Suffix to the column names.")
-    if q7a:
-        st.write(data.add_suffix('_rightone'))
-    q7b = st.checkbox("7b. Add a Prefix to the column names.")
-    if q7b:
-        st.write(data.add_prefix('leftone_'))
-
 
     # Perform the required operations based on the checkbox selections and display the output
     
