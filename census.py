@@ -44,14 +44,17 @@ if uploaded_file is not None:
         elif option == "Add suffix to column names":
             st.write(data.add_suffix('_rightone'))
         elif option == "Add prefix to column names":
-            st.write(data.add_prefix('leftone_'))
+            st.write(data.add_prefix('leftone_')) 
    
     if st.checkbox("SOME STATISTICAL OPERATIONS"):
         option = st.radio(
         'Select an operation',
-        ('Calculate state-wise total number of population and population with different religions',
+        ('statistics of the dataset ?','Calculate state-wise total number of population and population with different religions',
         'How many Male Workers were there in Maharashtra state ?', 'Calculate the total population of India according to the 2011 Census ?',
         'Which state has the highest population ?','Calculate the correlation coefficient between two Attributes'))
+
+        if option == 'statistics of the dataset ?':
+            st.write(data.describe())
 
         if option == 'Calculate state-wise total number of population and population with different religions':
             st.write(data.groupby('State_name').agg({'Population': 'sum', 'Hindus': 'sum', 'Muslims': 'sum', 'Christians': 'sum', 'Sikhs': 'sum', 'Buddhists': 'sum', 'Jains': 'sum'}).sort_values(by='Population', ascending=False))
@@ -69,30 +72,36 @@ if uploaded_file is not None:
         if option == 'Calculate the correlation coefficient between two Attributes':
             corr = data['Male_Workers'].corr(data['Female_Workers'])
             st.write("Correlation coefficient:", corr)
+
      
     if st.header("\nData visualizations"):
+        
         if st.checkbox("Show the percentages of Religions in India by a piechart"):
             st.write()
             fig = plt.figure(figsize=(50,25))
             ax1 = plt.subplot(312)
-            explode = (0, 0.1, 0, 0)
-            labels = ['Sikhs', 'Christians', 'Jains', 'Buddhists']
-            val = [data.Sikhs.sum(),data.Christians.sum(),data.Jains.sum(),data.Buddhists.sum()]
+            explode = (0, 0.1, 0, 0,0,0)
+            labels = ['Sikhs', 'Christians', 'Jains', 'Buddhists','Hindus','Muslims']
+            val = [data.Sikhs.sum(),data.Christians.sum(),data.Jains.sum(),data.Buddhists.sum(),data.Hindus.sum(),data.Muslims.sum()]
             ax1.pie(val, explode=explode, labels=labels, autopct='%1.1f%%', shadow=False, startangle=270)
             plt.title('Pie Chart of Religions')
             st.pyplot(fig)
+       
         if st.checkbox("Which state has the highest literacy rate?"):
             highest_literacy = data.groupby('State_name').agg({'Literate': 'mean'}).sort_values(by='Literate', ascending=False).head(1)
             fig = px.bar(data, x='State_name', y='Literate', title='Literacy rate by state', height=500)
             st.plotly_chart(fig)
+       
         if st.checkbox("Which states have the highest number of male and female workers?"):
             workers = data.groupby('State_name').agg({'Male_Workers': 'sum', 'Female_Workers': 'sum'}).sort_values(by='Male_Workers', ascending=True).head(10)
             fig = px.bar(workers, x=workers.index, y=['Male_Workers', 'Female_Workers'], title='Number of Male and Female Workers by State', barmode='group', height=500)
             st.plotly_chart(fig)
+       
         if st.checkbox("Population by state on a line chart"):
             pop_data = data.groupby('State_name').agg({'Population': 'sum'}).reset_index()
             fig = px.line(pop_data, x='State_name', y='Population', title='Line Chart Population by State')
             st.plotly_chart(fig)
+       
         if st.checkbox("Histogram for showing the Age Groups"):
             fig, ax = plt.subplots(figsize=(10, 5))
             ax.hist(data['Age_Group_0_29'], bins=10,label='Age 0-29',color='skyblue',edgecolor='black')
@@ -103,6 +112,21 @@ if uploaded_file is not None:
             ax.set_ylabel('Frequency')
             plt.legend()
             st.pyplot(fig)
+       
+        if st.checkbox("Correlation heatmap between two similar columns"):
+            corr_matrix = data.iloc[:,3:7].corr()
+            fig,ax=plt.subplots()
+            sns.heatmap(corr_matrix)
+            plt.title("Correlation Heatmap :")
+            st.pyplot(fig)
+
+    if st.checkbox("Find the statewise population  of India "):
+        state = st.selectbox('Select a state:', sorted(data['State_name'].unique()))
+        state_data = data[data['State_name'] == state]
+        district_populations = state_data.groupby('District_name')['Population'].sum()
+        st.write('Total population by district in', state, ':')
+        st.write(district_populations)
+    
 
     def calc_pop_density(population, area):
         return population / area
