@@ -77,8 +77,8 @@ if uploaded_file is not None:
     if st.header("\nData visualizations"):
         if st.checkbox("Show the percentages of Religions in India by a piechart"):
             st.write()
-            fig = plt.figure(figsize=(24,12))
-            ax1 = plt.subplot(312)
+            fig = plt.figure(figsize=(20,10))
+            ax1 = plt.subplot(310)
             explode = (0.1, 0.1, 0.1, 0.1,0.1,0)
             labels = ['Sikhs', 'Christians', 'Jains', 'Buddhists','Hindus','Muslims']
             val = [data.Sikhs.sum(),data.Christians.sum(),data.Jains.sum(),data.Buddhists.sum(),data.Hindus.sum(),data.Muslims.sum()]
