@@ -75,7 +75,6 @@ if uploaded_file is not None:
 
      
     if st.header("\nData visualizations"):
-        
         if st.checkbox("Show the percentages of Religions in India by a piechart"):
             st.write()
             fig = plt.figure(figsize=(24,12))
@@ -85,8 +84,8 @@ if uploaded_file is not None:
             val = [data.Sikhs.sum(),data.Christians.sum(),data.Jains.sum(),data.Buddhists.sum(),data.Hindus.sum(),data.Muslims.sum()]
             ax1.pie(val, explode=explode, labels=labels, autopct='%1.1f%%', shadow=False, startangle=270)
             plt.title('Pie Chart of Religions')
+            plt.legend(labels, loc="best")
             st.pyplot(fig)
-       
         if st.checkbox("Which state has the highest literacy rate?"):
             highest_literacy = data.groupby('State_name').agg({'Literate': 'mean'}).sort_values(by='Literate', ascending=False).head(1)
             fig = px.bar(data, x='State_name', y='Literate', title='Literacy rate by state', height=500)
