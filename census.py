@@ -82,7 +82,7 @@ if uploaded_file is not None:
             explode = (0.1, 0.1, 0.1, 0.1,0.1,0)
             labels = ['Sikhs', 'Christians', 'Jains', 'Buddhists','Hindus','Muslims']
             val = [data.Sikhs.sum(),data.Christians.sum(),data.Jains.sum(),data.Buddhists.sum(),data.Hindus.sum(),data.Muslims.sum()]
-            ax1.pie(val, explode=explode, labels=labels, autopct='%1.1f%%', shadow=False, startangle=270)
+            ax1.pie(val, explode=explode, labels=labels, autopct='%1.1f%%', shadow=False, startangle=90)
             plt.title('Pie Chart of Religions')
             plt.legend(labels, loc="best")
             st.pyplot(fig)
