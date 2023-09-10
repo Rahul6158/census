@@ -10,7 +10,7 @@ st.title("Exploratory Data Analysis on India Census Data Set")
 st.image('logo.png')
 
 # Load the dataset
-data = pd.read_csv('your_dataset.csv')  # Replace 'your_dataset.csv' with the actual file path of your dataset
+data = pd.read_csv('6. India Census 2011.csv')  # Replace 'your_dataset.csv' with the actual file path of your dataset
 logo = Image.open('logo.png')
 
 # The rest of your code remains the same
