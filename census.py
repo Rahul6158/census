@@ -22,7 +22,7 @@ for name in names:
 st.sidebar.title("Under The Guidance of :")
 st.sidebar.write("Dr.Bomma.Ramakrishna")
 # File upload
-    data=pd.read_csv('6. India Census 2011.csv')
+    data=pd.read_csv('https://github.com/Rahul6158/census/blob/ff0a9cddb8c83f4769f5c8ac32b0a295576264f3/IndiaCensus2011.csv')
     st.dataframe(data)
     
     st.title("India Census Data Analysis")
