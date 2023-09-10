@@ -22,7 +22,9 @@ for name in names:
 st.sidebar.title("Under The Guidance of :")
 st.sidebar.write("Dr.Bomma.Ramakrishna")
 # File upload
-    data=pd.read_csv('6. India Census 2011.csv')
+uploaded_file = st.file_uploader("Choose a India Census Dataset csv")
+if uploaded_file is not None:
+    data=pd.read_csv(uploaded_file)
     st.dataframe(data)
     
     st.title("India Census Data Analysis")
@@ -147,3 +149,6 @@ st.sidebar.write("Dr.Bomma.Ramakrishna")
         else:
             filtered_data = data.loc[data["State_name"] == selected_state]
         st.write(filtered_data)
+
+
+modify the code that the dataset should be already included, so that the user may not need to upload it again 
