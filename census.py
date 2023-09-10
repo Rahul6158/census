@@ -7,7 +7,7 @@ import plotly.express as px
 from PIL import Image
 
 st.title("Exploratory Data Analysis on India Census Data Set")
-st.image(logo)
+st.image('logo.png')
 
 # Load the dataset
 data = pd.read_csv('your_dataset.csv')  # Replace 'your_dataset.csv' with the actual file path of your dataset
