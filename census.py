@@ -3,13 +3,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
-import plotly.express as px 
-import random
+import plotly.express as px
 from PIL import Image
+
+st.title("Exploratory Data Analysis on India Census Data Set")
+st.image(logo)
+
+# Load the dataset
+data = pd.read_csv('your_dataset.csv')  # Replace 'your_dataset.csv' with the actual file path of your dataset
 logo = Image.open('logo.png')
-#pip install pandas numpy matplotlib seaborn streamlit
-#to run streamlit :   streamlit run census.py 
-st.set_page_config(page_title="INDIA CENSUS  EDA", page_icon=":bar_chart:", layout="wide")
+
+# The rest of your code remains the same
+st.set_page_config(page_title="INDIA CENSUS EDA", page_icon=":bar_chart:", layout="wide")
 st.image(logo)
 # Define the list of names
 names = ["21A21A6111-E Jeji Anil", "21A21A6158-Tusha Rahul B ", "21A21A6137-M S R Chandrika","21A21A6166-K Shyam chand","21A21A6101-A Leena","21A21A6140-N Upendra","21A21A6157-T Sumanth Raju","22A25A6105(L5)-T Naveen Babu"]
