@@ -147,7 +147,3 @@ st.sidebar.write("Dr.Bomma.Ramakrishna")
         else:
             filtered_data = data.loc[data["State_name"] == selected_state]
         st.write(filtered_data)
-
-
-modify the code that the dataset should be already included, so that the user may not need to upload it again 
-
