@@ -13,9 +13,9 @@ st.title("Exploratory Data Analysis on India Census Data Set")
 
 # Define the list of names
 names = [
-    "21A21A6111-E Jeji Anil", "21A21A6158-Tusha Rahul B ", "21A21A6137-M S R Chandrika",
-    "21A21A6166-K Shyam chand", "21A21A6101-A Leena", "21A21A6140-N Upendra",
-    "21A21A6157-T Sumanth Raju", "22A25A6105(L5)-T Naveen Babu"
+    "E Jeji Anil", "Tusha Rahul B ", "M S R Chandrika",
+    "K Shyam chand", "A Leena", "N Upendra",
+    "T Sumanth Raju", "T Naveen Babu"
 ]
 
 # Add the names to the sidebar
